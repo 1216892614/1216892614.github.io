@@ -13,7 +13,7 @@ export default defineComponent({
         let counter = 0;
         let showWordIndex = ref(0);
 
-        setInterval(() => {
+        const interval = setInterval(() => {
             counter++;
 
             if (counter >= 25) {
@@ -30,7 +30,7 @@ export default defineComponent({
         }, 50);
 
         return () => (
-            <span ref={spanRef}>{props.words[showWordIndex.value]}</span>
+            <span ref={spanRef}>{props.words[showWordIndex.value]},</span>
         );
     },
 });

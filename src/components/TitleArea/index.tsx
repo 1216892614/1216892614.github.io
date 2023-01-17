@@ -1,7 +1,7 @@
-import { Ref, defineComponent, onMounted, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import "./style.less";
 import { smooth } from "../../utils/animation";
-import AnimationWord from "./AnimationWord";
+import AnimationWords from "./AnimationWords";
 
 export default defineComponent({
     setup() {
@@ -25,13 +25,15 @@ export default defineComponent({
                 ) as HTMLDivElement;
 
                 let time = 0;
-                const pos = [bodyDiv.scrollTop, bodyDiv.clientHeight] as [
-                    number,
-                    number
-                ];
+                const pos = [
+                    bodyDiv.scrollTop,
+                    bodyDiv.clientHeight,
+                    bodyDiv.offsetHeight,
+                ] as [number, number, number];
 
                 let interval = setInterval(() => {
-                    if (pos[1] - bodyDiv.scrollTop >= 0.01) {
+                    if (pos[1] - bodyDiv.scrollTop >= 1) {
+                        console.log(bodyDiv.scrollTop, pos[1], pos[2]);
                         bodyDiv.scrollTop = smooth(pos[0], pos[1], 0.2, time);
                         time++;
                     } else {
@@ -59,7 +61,7 @@ export default defineComponent({
             <div class="TitleArea-main TitleArea-background" onWheel={onWheel}>
                 <h1 class="TitleArea-Title">
                     准备好你的
-                    <AnimationWord words={words} />,
+                    <AnimationWords words={words} />
                     <br />
                     接下来,
                     <br />
