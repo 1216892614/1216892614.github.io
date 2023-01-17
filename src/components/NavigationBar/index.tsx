@@ -1,6 +1,10 @@
 import { defineComponent } from "vue";
-import "./style.less";
+import style from "./style.module.less";
 import { smooth } from "../../utils/animation";
+
+import RMG from "/src/assets/icons/RMG.svg";
+import NerdsLOGO from "/src/assets/icons/NerdsLOGO.svg";
+import OrangeLOGO from "/src/assets/icons/OrangeLOGO.svg";
 
 interface Props {
     routeNames: string[];
@@ -29,29 +33,38 @@ export default defineComponent({
             }, 10);
         };
         return () => (
-            <div class="NavigationBar-main">
-                <div class="NavigationBar-iconWrapper" onClick={onclick}>
-                    <img src="/src/assets/icons/RMG.svg" height="50" />
+            <div class={style["NavigationBar-main"]}>
+                <div
+                    class={style["NavigationBar-iconWrapper"]}
+                    onClick={onclick}
+                >
+                    <img src={RMG} height="50" />
                 </div>
                 {props.routeNames.map((n) => (
-                    <router-link to={{ name: n }} class="NavigationBar-links">
+                    <router-link
+                        to={{ name: n }}
+                        class={style["NavigationBar-links"]}
+                    >
                         {n.toUpperCase()}
                     </router-link>
                 ))}
 
                 <div class="padding" />
 
-                <div class="NavigationBar-iconWrapper">
-                    <router-link to="NerdsGroup" class="NavigationBar-links">
-                        <img src="src/assets/icons/NerdsLOGO.svg" height="45" />
+                <div class={style["NavigationBar-iconWrapper"]}>
+                    <router-link
+                        to="NerdsPage"
+                        class={style["NavigationBar-links"]}
+                    >
+                        <img src={NerdsLOGO} height="45" />
                     </router-link>
                 </div>
-                <div class="NavigationBar-iconWrapper">
-                    <router-link to="OrangeGroup" class="NavigationBar-links">
-                        <img
-                            src="src/assets/icons/OrangeLOGO.svg"
-                            height="45"
-                        />
+                <div class={style["NavigationBar-iconWrapper"]}>
+                    <router-link
+                        to="PigeonsPage"
+                        class={style["NavigationBar-links"]}
+                    >
+                        <img src={OrangeLOGO} height="45" />
                     </router-link>
                 </div>
             </div>

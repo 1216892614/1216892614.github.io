@@ -1,3 +1,5 @@
+import { HTMLAttributes } from "vue";
+
 export const smooth = (
     begin: number,
     end: number,
@@ -17,4 +19,12 @@ export const smooth = (
         time - 1,
         (end - notNullResult) * easing + notNullResult
     );
+};
+
+export const multiStyles = (...styles: string[]) => {
+    let ans = "";
+
+    styles.forEach((s) => (ans += " " + s));
+
+    return ans;
 };

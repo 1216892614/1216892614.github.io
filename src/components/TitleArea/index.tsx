@@ -1,6 +1,6 @@
 import { defineComponent, onMounted, ref } from "vue";
-import "./style.less";
-import { smooth } from "../../utils/animation";
+import style from "./style.module.less";
+import { multiStyles, smooth } from "../../utils/animation";
 import AnimationWords from "./AnimationWords";
 
 export default defineComponent({
@@ -58,8 +58,14 @@ export default defineComponent({
         ];
 
         return () => (
-            <div class="TitleArea-main TitleArea-background" onWheel={onWheel}>
-                <h1 class="TitleArea-Title">
+            <div
+                class={multiStyles(
+                    style["TitleArea-main"],
+                    style["TitleArea-background"]
+                )}
+                onWheel={onWheel}
+            >
+                <h1 class={style["TitleArea-Title"]}>
                     准备好你的
                     <AnimationWords words={words} />
                     <br />

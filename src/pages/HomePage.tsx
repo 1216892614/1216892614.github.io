@@ -1,8 +1,9 @@
 import { defineComponent } from "vue";
+import style from "./style.module.less";
 
 export default defineComponent({
     
     setup() {
-        return () => <h1>Home</h1>;
+        return () => <div class={style["page"]}>Home</div>;
     },
 });
